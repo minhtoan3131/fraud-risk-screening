@@ -1,0 +1,233 @@
+{
+  "contract_version": "M9.4.3-history-feature-contract-v1",
+  "created_at_utc": "2026-09-21T16:45:40.356907+00:00",
+  "feature_contract": {
+    "behavioral_features": [
+      "time_since_previous_transaction_min",
+      "transactions_last_1h",
+      "amount_minus_previous_mean",
+      "is_new_merchant",
+      "has_prior_card_history"
+    ],
+    "current_transaction_features": [
+      "amount_numeric",
+      "transaction_mode",
+      "location_state",
+      "hour_of_day",
+      "day_of_week"
+    ],
+    "definitions": {
+      "amount_minus_previous_mean": {
+        "cold_start_value": null,
+        "definition": "Current amount_numeric minus mean Amount over all strict-prior transactions for the same card.",
+        "entity": "User + Card",
+        "group": "behavioral",
+        "history_scope": "full strict-prior card history",
+        "type": "numeric_with_structural_na"
+      },
+      "amount_numeric": {
+        "definition": "Parsed signed numeric Amount from current transaction.",
+        "group": "current_transaction",
+        "history_required": false,
+        "prediction_time_available": true,
+        "source": "Amount",
+        "type": "numeric"
+      },
+      "day_of_week": {
+        "domain": "0..6",
+        "group": "current_transaction",
+        "history_required": false,
+        "source": "Timestamp",
+        "type": "categorical_integer"
+      },
+      "has_prior_card_history": {
+        "cold_start_value": false,
+        "definition": "True iff at least one transaction exists for the same card with Timestamp(history) < Timestamp(current).",
+        "entity": "User + Card",
+        "group": "behavioral",
+        "role": "Companion state that preserves cold-start semantics after numerical structural NA handling.",
+        "type": "boolean"
+      },
+      "hour_of_day": {
+        "domain": "0..23",
+        "group": "current_transaction",
+        "history_required": false,
+        "source": "Timestamp",
+        "type": "categorical_integer"
+      },
+      "is_new_merchant": {
+        "cold_start_value": true,
+        "definition": "True iff current Merchant Name has never appeared for the same card at a strict-prior Timestamp.",
+        "entity": "User + Card + Merchant Name",
+        "group": "behavioral",
+        "same_timestamp_first_occurrences": "All remain True because same-timestamp peers cannot provide history to each other.",
+        "type": "boolean"
+      },
+      "location_state": {
+        "definition": "Locked low-cardinality semantic location state.",
+        "group": "current_transaction",
+        "history_required": false,
+        "sources": [
+          "Merchant City",
+          "Merchant State",
+          "Zip"
+        ],
+        "type": "categorical"
+      },
+      "time_since_previous_transaction_min": {
+        "cold_start_value": null,
+        "definition": "Minutes from current Timestamp to the nearest distinct strict-prior Timestamp for the same card.",
+        "entity": "User + Card",
+        "group": "behavioral",
+        "history_rule": "Timestamp(history) < Timestamp(current)",
+        "same_timestamp_peers_allowed": false,
+        "type": "numeric_with_structural_na"
+      },
+      "transaction_mode": {
+        "definition": "Deterministically stripped transaction-mode string.",
+        "group": "current_transaction",
+        "history_required": false,
+        "source": "Use Chip",
+        "type": "categorical"
+      },
+      "transactions_last_1h": {
+        "cold_start_value": 0,
+        "current_transaction_included": false,
+        "definition": "Count of strict-prior card transactions in [T - 1 hour, T).",
+        "entity": "User + Card",
+        "group": "behavioral",
+        "history_window": "[T - 1 hour, T)",
+        "same_timestamp_peers_included": false,
+        "type": "numeric",
+        "zero_is_valid_observed_value": true
+      }
+    },
+    "excluded_candidate_features": [
+      "mcc_code",
+      "merchant_state_cat",
+      "merchant_city_cat",
+      "zip_cat",
+      "month_of_year",
+      "is_weekend",
+      "amount_signed_log1p",
+      "is_negative_amount",
+      "is_zero_amount",
+      "prior_card_transaction_count",
+      "previous_amount_mean"
+    ],
+    "feature_count_pre_encoding": 10,
+    "semantic_feature_order": [
+      "amount_numeric",
+      "time_since_previous_transaction_min",
+      "transactions_last_1h",
+      "amount_minus_previous_mean",
+      "is_new_merchant",
+      "has_prior_card_history",
+      "transaction_mode",
+      "location_state",
+      "hour_of_day",
+      "day_of_week"
+    ],
+    "support_states_not_direct_features": [
+      "prior_card_transaction_count",
+      "previous_amount_mean"
+    ]
+  },
+  "gate_status": "PASS",
+  "gates": {
+    "G01_SOURCE_REGISTRY_PASS": true,
+    "G02_INPUT_DATA_CONTRACT_PASS": true,
+    "G03_STRICT_CAUSAL_RULE_LOCKED": true,
+    "G04_SAME_TIMESTAMP_PEERS_EXCLUDED": true,
+    "G05_HISTORY_UPDATE_AFTER_TIMESTAMP_GROUP": true,
+    "G06_HISTORICAL_WARMUP_PRESERVED": true,
+    "G07_COLD_START_EXACT": true,
+    "G08_TEN_FEATURES_EXACT_ORDER": true,
+    "G09_CURRENT_AND_BEHAVIORAL_SPLIT": true,
+    "G10_HISTORY_FEATURE_DEFINITIONS_LOCKED": true,
+    "G11_IDENTIFIERS_NOT_DIRECT_FEATURES": true,
+    "G12_TARGET_HISTORY_PROHIBITED": true,
+    "G13_CAUSAL_VIOLATION_TOLERANCE_ZERO": true,
+    "G14_NO_NAIVE_ROW_SHIFT_CONTRACT": true,
+    "G15_NO_SCIENTIFIC_CHANGE": true
+  },
+  "guardrails": {
+    "feature_semantics_changed": false,
+    "feature_values_computed_on_dataset": false,
+    "model_fit_performed": false,
+    "prediction_performed": false,
+    "preprocessing_fit_performed": false,
+    "preprocessing_transform_performed": false,
+    "threshold_changed": false
+  },
+  "history_contract": {
+    "cold_start": {
+      "condition": "no strict-prior User+Card transaction",
+      "na_semantics": "None/NA here means STRUCTURAL COLD-START STATE, not data-quality missingness.",
+      "values": {
+        "amount_minus_previous_mean": null,
+        "has_prior_card_history": false,
+        "is_new_merchant": true,
+        "time_since_previous_transaction_min": null,
+        "transactions_last_1h": 0
+      }
+    },
+    "forbidden_history_sources": [
+      "current transaction",
+      "same-timestamp peer",
+      "future transaction",
+      "future-inclusive aggregate",
+      "target label / Is Fraud?"
+    ],
+    "historical_warmup": {
+      "allowed": true,
+      "preserved": true,
+      "principle": "Classifier-training membership and history availability are separate concepts.",
+      "reset_at_validation_start": false,
+      "reset_at_w_long_start": false,
+      "reset_at_w_short_start": false
+    },
+    "lookback_semantics": {
+      "historical_amount": "full strict-prior card history",
+      "merchant_novelty": "full strict-prior card history",
+      "recency": "nearest strict-prior distinct Timestamp",
+      "velocity": "[T - 1 hour, T)"
+    },
+    "merchant_history_key": "Merchant Name",
+    "primary_entity_key": [
+      "User",
+      "Card"
+    ],
+    "raw_identifiers": {
+      "Card": "history key only",
+      "Merchant Name": "merchant-history key only",
+      "User": "history key only",
+      "direct_classifier_use": false
+    },
+    "same_timestamp_policy": {
+      "interpretation": "same prediction point",
+      "peer_history_allowed": false,
+      "state_update_timing": "Update behavioral state only after all transactions in the current Timestamp group have been scored/feature-computed."
+    },
+    "strict_causal_rule": "Timestamp(history) < Timestamp(current)",
+    "target_history_allowed": false
+  },
+  "implementation_invariants": {
+    "future_history_violation_allowed_count": 0,
+    "raw_row_order_is_history_semantics": false,
+    "same_timestamp_grouping_required": true,
+    "same_timestamp_history_violation_allowed_count": 0,
+    "simple_shift_without_timestamp_grouping_allowed": false,
+    "target_history_violation_allowed_count": 0
+  },
+  "next_step": "M9.4.4 — Preprocessing + Model + Threshold Contract",
+  "scope": "Strict-causal history semantics and exact ten-feature semantic interface before preprocessing.",
+  "source_trace": {
+    "behavioral_runtime_evidence": "CANON-M4.5 — causal behavioral features",
+    "consolidated_contract": "CANON-M4.8 — Feature/Preprocessing/Behavioral Contract",
+    "m9_1_identity": "09_01_artifact_inventory_identity_audit.ipynb",
+    "source_registry": "final_pipeline/docs/contracts/contract_source_registry.json",
+    "upstream_data_contract": "final_pipeline/docs/contracts/transaction_input_data_contract.json"
+  },
+  "status": "LOCKED"
+}

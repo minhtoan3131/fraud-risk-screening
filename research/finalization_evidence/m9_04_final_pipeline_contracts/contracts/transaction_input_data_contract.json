@@ -1,0 +1,340 @@
+{
+  "amount_contract": {
+    "automatic_abs": false,
+    "automatic_clipping": false,
+    "output": "amount_numeric",
+    "parse_failure_policy": "INVALID_INPUT",
+    "parser": [
+      "astype string",
+      "remove $",
+      "remove comma",
+      "strip whitespace",
+      "numeric conversion"
+    ],
+    "preserve_negative": true,
+    "preserve_zero": true,
+    "source": "Amount"
+  },
+  "classifier_boundary": {
+    "context_only_fields": [
+      "User",
+      "Card",
+      "Merchant Name"
+    ],
+    "current_transaction_feature_sources": [
+      "Year",
+      "Month",
+      "Day",
+      "Time",
+      "Amount",
+      "Use Chip",
+      "Merchant City",
+      "Merchant State",
+      "Zip"
+    ],
+    "excluded_from_frozen_baseline": [
+      "MCC",
+      "Errors?",
+      "Is Fraud?"
+    ],
+    "prohibited_direct_classifier_fields": [
+      "User",
+      "Card",
+      "Merchant Name",
+      "Errors?",
+      "Is Fraud?",
+      "Timestamp"
+    ],
+    "statement": "Raw transaction fields are validated/derived first; the classifier receives only the locked semantic feature/preprocessing representation."
+  },
+  "contract_version": "M9.4.2-transaction-input-data-contract-v1",
+  "created_at_utc": "2026-09-21T16:42:23.732767+00:00",
+  "fields": {
+    "Amount": {
+      "derived_feature": "amount_numeric",
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "normalization": [
+        "cast to string",
+        "remove literal $",
+        "remove comma separators",
+        "strip surrounding whitespace",
+        "convert to numeric"
+      ],
+      "observed_raw_type": "currency-formatted string",
+      "required_for_scoring": true,
+      "role": "current transaction numerical source",
+      "semantic_rule": "Preserve sign, preserve zero, no abs(), no automatic clipping/winsorization."
+    },
+    "Card": {
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "integer identifier",
+      "required_for_scoring": true,
+      "role": "identifier / User+Card history key",
+      "semantic_rule": "Card is interpreted within User context; numeric magnitude is not a model feature."
+    },
+    "Day": {
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "integer",
+      "required_for_scoring": true,
+      "role": "Timestamp component"
+    },
+    "Errors?": {
+      "direct_classifier_feature": false,
+      "frozen_baseline_use": "PROHIBITED",
+      "reason": "Prediction-time availability was not proven for Model V1.",
+      "required_for_scoring": false,
+      "role": "excluded processing signal"
+    },
+    "Is Fraud?": {
+      "direct_classifier_feature": false,
+      "frozen_baseline_use": "PROHIBITED",
+      "reason": "Ground-truth label is never an inference input.",
+      "required_for_scoring": false,
+      "role": "supervised-learning target"
+    },
+    "MCC": {
+      "direct_classifier_feature": false,
+      "frozen_baseline_use": "EXCLUDED",
+      "required_for_scoring": false,
+      "role": "conditional experiment candidate only"
+    },
+    "Merchant City": {
+      "derived_feature": "location_state",
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_EXPECTED_IN_OFFICIAL_ARTIFACT",
+      "normalization": "deterministic str.strip()",
+      "observed_raw_type": "string",
+      "required_for_scoring": true,
+      "role": "location semantic source"
+    },
+    "Merchant Name": {
+      "derived_feature": "is_new_merchant",
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "identifier",
+      "required_for_scoring": true,
+      "role": "merchant history key",
+      "semantic_rule": "Used only for strict-prior merchant novelty state; not placed directly in classifier X."
+    },
+    "Merchant State": {
+      "derived_feature": "location_state",
+      "direct_classifier_feature": false,
+      "missing_policy": "ALLOWED_AS_STRUCTURAL_LOCATION_MISSINGNESS",
+      "normalization": "deterministic str.strip() when present",
+      "observed_raw_type": "string / missing",
+      "required_for_scoring": true,
+      "role": "location semantic source"
+    },
+    "Month": {
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "integer",
+      "required_for_scoring": true,
+      "role": "Timestamp component"
+    },
+    "Time": {
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "HH:MM string",
+      "required_for_scoring": true,
+      "role": "Timestamp component"
+    },
+    "Use Chip": {
+      "derived_feature": "transaction_mode",
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "normalization": "deterministic str.strip() only",
+      "observed_core_values": [
+        "Swipe Transaction",
+        "Chip Transaction",
+        "Online Transaction"
+      ],
+      "observed_raw_type": "string",
+      "required_for_scoring": true,
+      "role": "current transaction categorical source"
+    },
+    "User": {
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "integer identifier",
+      "required_for_scoring": true,
+      "role": "identifier / User+Card history key",
+      "semantic_rule": "Identifier equality is meaningful for history grouping; numeric magnitude is not a model feature."
+    },
+    "Year": {
+      "direct_classifier_feature": false,
+      "missing_policy": "NOT_ALLOWED",
+      "observed_raw_type": "integer",
+      "required_for_scoring": true,
+      "role": "Timestamp component"
+    },
+    "Zip": {
+      "derived_feature": "location_state",
+      "direct_classifier_feature": false,
+      "missing_policy": "ALLOWED_AS_STRUCTURAL_LOCATION_MISSINGNESS",
+      "observed_raw_type": "categorical code / missing",
+      "required_for_scoring": true,
+      "role": "location semantic source",
+      "semantic_rule": "Zip is a categorical/location code, not a numerical magnitude."
+    }
+  },
+  "gate_status": "PASS",
+  "gates": {
+    "G01_SOURCE_REGISTRY_PASS": true,
+    "G02_RAW_SCHEMA_15_COLUMNS": true,
+    "G03_SCORING_FIELDS_EXACT": true,
+    "G04_REQUIRED_FIELDS_IN_RAW_SCHEMA": true,
+    "G05_CONTEXT_KEYS_NOT_DIRECT_FEATURES": true,
+    "G06_TARGET_AND_ERRORS_PROHIBITED": true,
+    "G07_MCC_NOT_IN_FROZEN_BASELINE": true,
+    "G08_TIMESTAMP_DERIVATION_LOCKED": true,
+    "G09_AMOUNT_SEMANTICS_LOCKED": true,
+    "G10_LOCATION_STATES_LOCKED": true,
+    "G11_NO_SCIENTIFIC_CHANGE": true
+  },
+  "guardrails": {
+    "feature_semantics_changed": false,
+    "model_fit_performed": false,
+    "prediction_performed": false,
+    "preprocessing_fit_performed": false,
+    "preprocessing_transform_performed": false,
+    "threshold_changed": false
+  },
+  "layers": {
+    "canonical_internal_transaction": {
+      "context_keys": [
+        "User",
+        "Card",
+        "Merchant Name"
+      ],
+      "note": "This layer is an internal semantic representation; it is not the 47-column classifier matrix.",
+      "required_derived_values": [
+        "Timestamp",
+        "amount_numeric",
+        "transaction_mode",
+        "location_state"
+      ]
+    },
+    "dataset_adapter": {
+      "column_count": 15,
+      "expected_raw_columns": [
+        "User",
+        "Card",
+        "Year",
+        "Month",
+        "Day",
+        "Time",
+        "Amount",
+        "Use Chip",
+        "Merchant Name",
+        "Merchant City",
+        "Merchant State",
+        "Zip",
+        "MCC",
+        "Errors?",
+        "Is Fraud?"
+      ],
+      "responsibility": "Read/validate dataset rows and extract only fields authorized for the screening path.",
+      "source": "IBM TabFormer card_transaction.v1.csv"
+    },
+    "scoring_payload": {
+      "errors_field_allowed": false,
+      "extra_field_policy": "Frozen inference logic must not consume extra dataset fields implicitly.",
+      "field_count": 12,
+      "mcc_used_by_frozen_model": false,
+      "required_fields": [
+        "User",
+        "Card",
+        "Year",
+        "Month",
+        "Day",
+        "Time",
+        "Amount",
+        "Use Chip",
+        "Merchant Name",
+        "Merchant City",
+        "Merchant State",
+        "Zip"
+      ],
+      "target_allowed": false
+    }
+  },
+  "location_contract": {
+    "locked_states": [
+      "NON_PHYSICAL_OR_ONLINE",
+      "PHYSICAL_COMPLETE",
+      "PHYSICAL_ZIP_UNAVAILABLE"
+    ],
+    "other_combination": "OTHER_INCONSISTENT in research implementation; must not be silently coerced into a locked state. Final error behavior is locked in M9.4.5.",
+    "output": "location_state",
+    "rules": {
+      "NON_PHYSICAL_OR_ONLINE": "Merchant City normalized to ONLINE and Merchant State missing and Zip missing",
+      "PHYSICAL_COMPLETE": "Merchant City not ONLINE and Merchant State present and Zip present",
+      "PHYSICAL_ZIP_UNAVAILABLE": "Merchant City not ONLINE and Merchant State present and Zip missing"
+    },
+    "sources": [
+      "Merchant City",
+      "Merchant State",
+      "Zip"
+    ]
+  },
+  "next_step": "M9.4.3 — History + Feature Contract",
+  "observed_raw_header": [
+    "User",
+    "Card",
+    "Year",
+    "Month",
+    "Day",
+    "Time",
+    "Amount",
+    "Use Chip",
+    "Merchant Name",
+    "Merchant City",
+    "Merchant State",
+    "Zip",
+    "MCC",
+    "Errors?",
+    "Is Fraud?"
+  ],
+  "raw_header_verified": true,
+  "scope": "Canonical raw transaction data boundary for the frozen final screening pipeline.",
+  "source_trace": {
+    "contract_source_registry": "final_pipeline/docs/contracts/contract_source_registry.json",
+    "data_quality": "M4.3",
+    "frozen_core_feature_boundary": "M4.6 / M4.8",
+    "raw_schema": "M1.5 technical audit + M1.8 data dictionary",
+    "timestamp_and_amount": "M4.2",
+    "transaction_representation": "M4.4"
+  },
+  "status": "LOCKED",
+  "timestamp_contract": {
+    "classifier_direct_feature": false,
+    "construction": "date = Year/Month/Day; time delta = Time + ':00'; Timestamp = date + time delta",
+    "parse_failure_policy": "INVALID_INPUT",
+    "raw_row_order_may_replace_timestamp": false,
+    "resolution": "minute",
+    "sources": [
+      "Year",
+      "Month",
+      "Day",
+      "Time"
+    ],
+    "time_format": "HH:MM",
+    "uses": [
+      "history ordering",
+      "strict causal boundary",
+      "rolling windows",
+      "calendar feature derivation"
+    ]
+  },
+  "transaction_mode_contract": {
+    "automatic_casefold": false,
+    "automatic_fuzzy_merge": false,
+    "normalization": "str.strip()",
+    "output": "transaction_mode",
+    "source": "Use Chip"
+  }
+}

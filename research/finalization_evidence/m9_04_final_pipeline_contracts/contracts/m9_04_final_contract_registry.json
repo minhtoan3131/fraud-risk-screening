@@ -1,0 +1,133 @@
+{
+  "architecture_invariants": {
+    "application_role": "user-facing consumer of final_pipeline",
+    "application_runtime_dependency_on_research": "NONE",
+    "core_logic_single_source_of_truth_required": true,
+    "final_pipeline_role": "canonical implementation",
+    "final_pipeline_runtime_dependency_on_research_after_m9_6": "NONE",
+    "research_role": "historical evidence / provenance"
+  },
+  "attestations": {
+    "artifact_promotion_performed_in_m9_4": false,
+    "feature_semantics_changed_in_m9_4": false,
+    "model_fit_performed_in_m9_4": false,
+    "prediction_performed_in_m9_4": false,
+    "preprocessing_transform_performed_in_m9_4": false,
+    "threshold_changed_in_m9_4": false
+  },
+  "completed_at_utc": "2026-09-21T16:58:49.911848+00:00",
+  "contract_directory": "final_pipeline/docs/contracts",
+  "contracts": {
+    "history_feature": {
+      "contract_version": "M9.4.3-history-feature-contract-v1",
+      "file": "history_feature_contract.json",
+      "gate_status": "PASS",
+      "sha256": "228d61b9c9ee0832b3e0561ac6333e08bbdb001541b3600b1190f6134949c81f"
+    },
+    "inference_output_artifact_error": {
+      "contract_version": "M9.4.5-inference-output-artifact-error-contract-v1",
+      "file": "inference_output_artifact_error_contract.json",
+      "gate_status": "PASS",
+      "sha256": "e813ba029b227a67c69466ccbe162cbb811c9a3627cbdd0eaeb0e3401ec57e37"
+    },
+    "preprocessing_model_threshold": {
+      "contract_version": "M9.4.4-preprocessing-model-threshold-contract-v1",
+      "file": "preprocessing_model_threshold_contract.json",
+      "gate_status": "PASS",
+      "sha256": "0622bc1bcabb939da7f168ddc1b45a57aae473986300158e3f100e7dbcff2dfe"
+    },
+    "source_registry": {
+      "contract_version": "M9.4.1-contract-source-registry-v1",
+      "file": "contract_source_registry.json",
+      "gate_status": "PASS",
+      "sha256": "62c7e33809f9d08da819babb9bfde0b3ceac263d5366537449d539d25746b092"
+    },
+    "transaction_input_data": {
+      "contract_version": "M9.4.2-transaction-input-data-contract-v1",
+      "file": "transaction_input_data_contract.json",
+      "gate_status": "PASS",
+      "sha256": "9471b406125d22e4d2be8ad0fd4e64052dabb3eb9958cb4ccfd07441013e8457"
+    }
+  },
+  "cross_contract_gates": {
+    "G01_ALL_SUBCONTRACTS_PASS": true,
+    "G02_EXACT_10_FEATURE_ORDER_CONSISTENT": true,
+    "G03_FEATURE_COUNTS_10_TO_47_CONSISTENT": true,
+    "G04_STRICT_CAUSAL_RULE_CONSISTENT": true,
+    "G05_COLD_START_CONSISTENT": true,
+    "G06_MODEL_ID_CONSISTENT": true,
+    "G07_MODEL_FINGERPRINT_CONSISTENT": true,
+    "G08_PREPROCESSING_FINGERPRINT_CONSISTENT": true,
+    "G09_POSITIVE_CLASS_CONSISTENT": true,
+    "G10_THRESHOLD_STRICT_GT_CONSISTENT": true,
+    "G11_OUTPUT_FIELDS_EXACT_MINIMUM": true,
+    "G12_TARGET_EXCLUDED_FROM_INFERENCE": true,
+    "G13_ERRORS_FIELD_EXCLUDED": true,
+    "G14_RAW_IDENTIFIERS_NOT_DIRECT_FEATURES": true,
+    "G15_RUNTIME_RESEARCH_DEPENDENCY_FORBIDDEN": true,
+    "G16_PROMOTION_DEFERRED_AND_PROTECTED": true,
+    "G17_RISK_SCORE_LANGUAGE_CONSISTENT": true,
+    "G18_APPLICATION_BOUNDARY_LOCKED": true,
+    "G19_SOURCE_REGISTRY_HAS_10_TARGET_CONTRACTS": true,
+    "G20_NO_SCIENTIFIC_CHANGE_ACROSS_M9_4": true
+  },
+  "decision": "PASS",
+  "frozen_invariants": {
+    "classes": [
+      0,
+      1
+    ],
+    "encoded_feature_count": 47,
+    "matrix_dtype": "float32",
+    "matrix_type": "CSR sparse matrix",
+    "minimum_output_fields": [
+      "model_id",
+      "risk_score",
+      "screening_prediction",
+      "threshold"
+    ],
+    "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+    "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "positive_class": 1,
+    "positive_class_index": 1,
+    "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98",
+    "risk_score_interface": "predict_proba positive-class score",
+    "same_timestamp_peer_history_allowed": false,
+    "semantic_feature_count": 10,
+    "semantic_feature_order": [
+      "amount_numeric",
+      "time_since_previous_transaction_min",
+      "transactions_last_1h",
+      "amount_minus_previous_mean",
+      "is_new_merchant",
+      "has_prior_card_history",
+      "transaction_mode",
+      "location_state",
+      "hour_of_day",
+      "day_of_week"
+    ],
+    "strict_causal_rule": "Timestamp(history) < Timestamp(current)",
+    "threshold": 0.5,
+    "threshold_comparator": ">"
+  },
+  "m9_5_authorization": "AUTHORIZED",
+  "m9_5_scope": {
+    "implementation_order": [
+      "data + validation",
+      "transaction feature representation",
+      "behavioral/history features",
+      "frozen preprocessing",
+      "artifact loader/config",
+      "inference primitives"
+    ],
+    "name": "Canonical Implementation Extraction",
+    "rules": [
+      "extract/refactor from reviewed evidence; do not redesign semantics",
+      "add unit/regression tests while extracting",
+      "compare against locked contracts",
+      "do not train or promote official artifacts in M9.5",
+      "do not make application depend on research"
+    ]
+  },
+  "registry_version": "M9.4-final-contract-registry-v1"
+}

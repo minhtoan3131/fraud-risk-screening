@@ -1,0 +1,28 @@
+{
+  "registry_version": "final-pipeline-registry-v1",
+  "created_at_utc": "2026-09-22T02:57:48.579505+00:00",
+  "decision": "PASS",
+  "handoff": "FINAL PIPELINE READY -> APPLICATION",
+  "frozen_subject": {
+    "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+    "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98",
+    "encoded_feature_count": 47,
+    "threshold": 0.5,
+    "threshold_comparator": ">"
+  },
+  "verification": {
+    "full_unit_test_count": 175,
+    "dataset_fast_gate_path": "/Users/minhtoan/SE/HocTrenLop/Trí tuệ nhân tạo/fraud-risk-screening-local-data/ibm_tabformer/card_transaction.v1.csv",
+    "clean_walkthrough_count": 5
+  },
+  "runtime_boundaries": {
+    "final_pipeline_to_research": "NONE",
+    "application_to_research": "NONE",
+    "application_to_final_pipeline": "ALLOWED_AND_REQUIRED",
+    "official_artifacts_read_only": true,
+    "training_may_overwrite_official": false
+  },
+  "gate_count": 14,
+  "all_gates": "PASS"
+}

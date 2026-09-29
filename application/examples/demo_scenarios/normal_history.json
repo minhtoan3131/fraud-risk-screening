@@ -1,0 +1,44 @@
+[
+  {
+    "User": 900001,
+    "Card": 0,
+    "Year": 2019,
+    "Month": 8,
+    "Day": 10,
+    "Time": "12:15",
+    "Amount": "$39.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 50001,
+    "Merchant City": "San Francisco",
+    "Merchant State": "CA",
+    "Zip": 94105
+  },
+  {
+    "User": 900001,
+    "Card": 0,
+    "Year": 2019,
+    "Month": 8,
+    "Day": 13,
+    "Time": "18:00",
+    "Amount": "$47.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 50001,
+    "Merchant City": "San Francisco",
+    "Merchant State": "CA",
+    "Zip": 94105
+  },
+  {
+    "User": 900001,
+    "Card": 0,
+    "Year": 2019,
+    "Month": 8,
+    "Day": 14,
+    "Time": "16:45",
+    "Amount": "$43.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 50001,
+    "Merchant City": "San Francisco",
+    "Merchant State": "CA",
+    "Zip": 94105
+  }
+]

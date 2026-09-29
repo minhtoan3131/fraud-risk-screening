@@ -1,0 +1,16 @@
+[
+  {
+    "User": 999999,
+    "Card": 9,
+    "Year": 2018,
+    "Month": 1,
+    "Day": 1,
+    "Time": "09:00",
+    "Amount": "$10.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 100,
+    "Merchant City": "A",
+    "Merchant State": "CA",
+    "Zip": 90001
+  }
+]

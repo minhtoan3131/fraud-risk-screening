@@ -1,0 +1,14 @@
+{
+  "User": 900001,
+  "Card": 0,
+  "Year": 2019,
+  "Month": 8,
+  "Day": 15,
+  "Time": "14:30",
+  "Amount": "$42.00",
+  "Use Chip": "Chip Transaction",
+  "Merchant Name": 50001,
+  "Merchant City": "San Francisco",
+  "Merchant State": "CA",
+  "Zip": 94105
+}

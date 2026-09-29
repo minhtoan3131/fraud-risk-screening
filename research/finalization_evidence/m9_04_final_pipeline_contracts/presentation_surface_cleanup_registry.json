@@ -1,0 +1,369 @@
+{
+  "created_at_utc": "2026-09-21T17:20:16.402114+00:00",
+  "gates": {
+    "G01_CONTRACT_EVIDENCE_MOVED": true,
+    "G02_TOOLING_MOVED": true,
+    "G03_CONTRACT_BYTES_PRESERVED": true,
+    "G04_TOOL_BYTES_PRESERVED": true,
+    "G05_ORIGINAL_README_BACKUP_PRESERVED": true,
+    "G06_FINAL_PIPELINE_README_REWRITTEN": true,
+    "G07_PRESENTATION_SURFACE_HAS_NO_PROGRESS_SIGNALS": true,
+    "G08_APPLICATION_REMAINS_UNMODIFIED_BY_PLAN": true,
+    "G09_NO_MODEL_TRAINING": true,
+    "G10_NO_ARTIFACT_PROMOTION_OR_OVERWRITE": true
+  },
+  "moves": {
+    "final_pipeline/docs/contracts": "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts",
+    "final_pipeline/tools/m9_04_contract_generation": "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation"
+  },
+  "naming_policy": {
+    "application": "neutral product/application naming only",
+    "final_pipeline": "neutral technical naming only",
+    "future_official_manifest_filename": "artifact_manifest.json",
+    "future_official_model_filename": "model.joblib",
+    "future_official_preprocessing_filename": "preprocessing_state.json",
+    "research": "progress/evidence naming allowed"
+  },
+  "operation": "presentation_surface_cleanup",
+  "presentation_hits_after": [],
+  "presentation_hits_before": [
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/README.md",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "path"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "path"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "content"
+    },
+    {
+      "category": "milestone_word",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "content"
+    },
+    {
+      "category": "handoff_language",
+      "path": "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/contract_source_registry.json",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/docs/contracts/contract_source_registry.json",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/docs/contracts/contract_source_registry.json",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/history_feature_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/docs/contracts/history_feature_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/inference_output_artifact_error_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/docs/contracts/inference_output_artifact_error_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "gate_language",
+      "path": "final_pipeline/docs/contracts/inference_output_artifact_error_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/m9_04_final_contract_registry.json",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/docs/contracts/m9_04_final_contract_registry.json",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/preprocessing_model_threshold_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/docs/contracts/preprocessing_model_threshold_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/docs/contracts/transaction_input_data_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/docs/contracts/transaction_input_data_contract.json",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/README.md",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_01_contract_source_audit.py",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_01_contract_source_audit.py",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_01_contract_source_audit.py",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_02_transaction_input_data_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_02_transaction_input_data_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_03_history_feature_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_03_history_feature_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_04_preprocessing_model_threshold_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_04_preprocessing_model_threshold_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_05_inference_output_artifact_error_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_05_inference_output_artifact_error_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "gate_language",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_05_inference_output_artifact_error_contract.py",
+      "where": "content"
+    },
+    {
+      "category": "milestone_token",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py",
+      "where": "content"
+    },
+    {
+      "category": "milestone_word",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py",
+      "where": "content"
+    },
+    {
+      "category": "canon_label",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py",
+      "where": "content"
+    },
+    {
+      "category": "gate_language",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py",
+      "where": "content"
+    },
+    {
+      "category": "authorization_language",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py",
+      "where": "content"
+    },
+    {
+      "category": "handoff_language",
+      "path": "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py",
+      "where": "content"
+    }
+  ],
+  "preservation": {
+    "contracts_after": {
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/CANON-M9.4 — Final Pipeline Contract.md": {
+        "sha256": "15e707115176f28a4468370100c69efe75a81ac590d697321f33f0cf234b7f5e",
+        "size_bytes": 6411
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/contract_source_registry.json": {
+        "sha256": "62c7e33809f9d08da819babb9bfde0b3ceac263d5366537449d539d25746b092",
+        "size_bytes": 6452
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/history_feature_contract.json": {
+        "sha256": "228d61b9c9ee0832b3e0561ac6333e08bbdb001541b3600b1190f6134949c81f",
+        "size_bytes": 8556
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/inference_output_artifact_error_contract.json": {
+        "sha256": "e813ba029b227a67c69466ccbe162cbb811c9a3627cbdd0eaeb0e3401ec57e37",
+        "size_bytes": 9854
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/m9_04_final_contract_registry.json": {
+        "sha256": "39c8dd9063c0d56bc6a3cad28627a02a11679f5df919b8074976d67d7901c879",
+        "size_bytes": 5120
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/preprocessing_model_threshold_contract.json": {
+        "sha256": "0622bc1bcabb939da7f168ddc1b45a57aae473986300158e3f100e7dbcff2dfe",
+        "size_bytes": 7550
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/contracts/transaction_input_data_contract.json": {
+        "sha256": "9471b406125d22e4d2be8ad0fd4e64052dabb3eb9958cb4ccfd07441013e8457",
+        "size_bytes": 10641
+      }
+    },
+    "contracts_before": {
+      "final_pipeline/docs/contracts/CANON-M9.4 — Final Pipeline Contract.md": {
+        "sha256": "15e707115176f28a4468370100c69efe75a81ac590d697321f33f0cf234b7f5e",
+        "size_bytes": 6411
+      },
+      "final_pipeline/docs/contracts/contract_source_registry.json": {
+        "sha256": "62c7e33809f9d08da819babb9bfde0b3ceac263d5366537449d539d25746b092",
+        "size_bytes": 6452
+      },
+      "final_pipeline/docs/contracts/history_feature_contract.json": {
+        "sha256": "228d61b9c9ee0832b3e0561ac6333e08bbdb001541b3600b1190f6134949c81f",
+        "size_bytes": 8556
+      },
+      "final_pipeline/docs/contracts/inference_output_artifact_error_contract.json": {
+        "sha256": "e813ba029b227a67c69466ccbe162cbb811c9a3627cbdd0eaeb0e3401ec57e37",
+        "size_bytes": 9854
+      },
+      "final_pipeline/docs/contracts/m9_04_final_contract_registry.json": {
+        "sha256": "39c8dd9063c0d56bc6a3cad28627a02a11679f5df919b8074976d67d7901c879",
+        "size_bytes": 5120
+      },
+      "final_pipeline/docs/contracts/preprocessing_model_threshold_contract.json": {
+        "sha256": "0622bc1bcabb939da7f168ddc1b45a57aae473986300158e3f100e7dbcff2dfe",
+        "size_bytes": 7550
+      },
+      "final_pipeline/docs/contracts/transaction_input_data_contract.json": {
+        "sha256": "9471b406125d22e4d2be8ad0fd4e64052dabb3eb9958cb4ccfd07441013e8457",
+        "size_bytes": 10641
+      }
+    },
+    "tools_after": {
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/README.md": {
+        "sha256": "f032d8b48d7d10562d6df8f0b76629dbe6f6e6810198b5a1dbc6c988a63378d8",
+        "size_bytes": 204
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/m9_04_01_contract_source_audit.py": {
+        "sha256": "70cd7fd482011497e0f3d2650cb7c9ed1cf0476635a10acb6e21fe0cd36614d6",
+        "size_bytes": 12972
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/m9_04_02_transaction_input_data_contract.py": {
+        "sha256": "628da2133d657dcafacefb037d30be9efc06dfa0ccfc9f8a86aa21ed0da5c10d",
+        "size_bytes": 19557
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/m9_04_03_history_feature_contract.py": {
+        "sha256": "bc57f059f3f56cac41ab441fdf05618094b808d20dce09d9a38caa727bb72a05",
+        "size_bytes": 17700
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/m9_04_04_preprocessing_model_threshold_contract.py": {
+        "sha256": "9511629adec1b435f6c591d2b1b178eaa600aeac71d1ed4faa8ded102bea887b",
+        "size_bytes": 19349
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/m9_04_05_inference_output_artifact_error_contract.py": {
+        "sha256": "c0f23a7eb5c232cbc3308f44077808cb5ffb5983240ac6fe79a2828f14d5699e",
+        "size_bytes": 22820
+      },
+      "research/finalization_evidence/m9_04_final_pipeline_contracts/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py": {
+        "sha256": "c7c3c98eee04efbcff035f20b7a7c8034083f5f84673ebcc3978f4700f1fc6e8",
+        "size_bytes": 23461
+      }
+    },
+    "tools_before": {
+      "final_pipeline/tools/m9_04_contract_generation/README.md": {
+        "sha256": "f032d8b48d7d10562d6df8f0b76629dbe6f6e6810198b5a1dbc6c988a63378d8",
+        "size_bytes": 204
+      },
+      "final_pipeline/tools/m9_04_contract_generation/m9_04_01_contract_source_audit.py": {
+        "sha256": "70cd7fd482011497e0f3d2650cb7c9ed1cf0476635a10acb6e21fe0cd36614d6",
+        "size_bytes": 12972
+      },
+      "final_pipeline/tools/m9_04_contract_generation/m9_04_02_transaction_input_data_contract.py": {
+        "sha256": "628da2133d657dcafacefb037d30be9efc06dfa0ccfc9f8a86aa21ed0da5c10d",
+        "size_bytes": 19557
+      },
+      "final_pipeline/tools/m9_04_contract_generation/m9_04_03_history_feature_contract.py": {
+        "sha256": "bc57f059f3f56cac41ab441fdf05618094b808d20dce09d9a38caa727bb72a05",
+        "size_bytes": 17700
+      },
+      "final_pipeline/tools/m9_04_contract_generation/m9_04_04_preprocessing_model_threshold_contract.py": {
+        "sha256": "9511629adec1b435f6c591d2b1b178eaa600aeac71d1ed4faa8ded102bea887b",
+        "size_bytes": 19349
+      },
+      "final_pipeline/tools/m9_04_contract_generation/m9_04_05_inference_output_artifact_error_contract.py": {
+        "sha256": "c0f23a7eb5c232cbc3308f44077808cb5ffb5983240ac6fe79a2828f14d5699e",
+        "size_bytes": 22820
+      },
+      "final_pipeline/tools/m9_04_contract_generation/m9_04_06_finalize_contract_gate.py": {
+        "sha256": "c7c3c98eee04efbcff035f20b7a7c8034083f5f84673ebcc3978f4700f1fc6e8",
+        "size_bytes": 23461
+      }
+    }
+  },
+  "readme": {
+    "backup": "research/finalization_evidence/m9_04_final_pipeline_contracts/original_final_pipeline_README.md",
+    "sha256_after": "e731816234e79eb8a7a73e99688d11d57eed76381c95334b329bd94e0f8f0138",
+    "sha256_before": "d5d90689eba0f6af1f8e7d4d97850c8d4cca7d56a8c76ba820b08b13bca808f7",
+    "source": "final_pipeline/README.md"
+  },
+  "rollback": {
+    "command": "python presentation_surface_cleanup.py --rollback",
+    "supported": true
+  },
+  "status": "PASS"
+}

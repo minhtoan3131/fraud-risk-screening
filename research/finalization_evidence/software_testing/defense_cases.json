@@ -1,0 +1,64 @@
+{
+  "frozen_final_test": {
+    "final_rows": 722955,
+    "final_fraud": 1035,
+    "group_sizes": {
+      "TP": 393,
+      "FP": 782,
+      "FN": 642,
+      "TN": 721138
+    },
+    "cases": {
+      "TP": {
+        "row_id": 529515,
+        "final_test_index": 15392,
+        "ground_truth": 1,
+        "frozen_prediction": 1,
+        "frozen_risk_score": 0.6899999976158142,
+        "replay_prediction": 1,
+        "replay_risk_score": 0.6899999976158142,
+        "exact_prediction_parity": true,
+        "exact_float32_score_parity": true
+      },
+      "FP": {
+        "row_id": 75236,
+        "final_test_index": 1852,
+        "ground_truth": 0,
+        "frozen_prediction": 1,
+        "frozen_risk_score": 0.5600000023841858,
+        "replay_prediction": 1,
+        "replay_risk_score": 0.5600000023841858,
+        "exact_prediction_parity": true,
+        "exact_float32_score_parity": true
+      },
+      "FN": {
+        "row_id": 529506,
+        "final_test_index": 15383,
+        "ground_truth": 1,
+        "frozen_prediction": 0,
+        "frozen_risk_score": 0.029999999329447746,
+        "replay_prediction": 0,
+        "replay_risk_score": 0.029999999329447746,
+        "exact_prediction_parity": true,
+        "exact_float32_score_parity": true
+      },
+      "TN": {
+        "row_id": 4861,
+        "final_test_index": 0,
+        "ground_truth": 0,
+        "frozen_prediction": 0,
+        "frozen_risk_score": 0.0,
+        "replay_prediction": 0,
+        "replay_risk_score": 0.0,
+        "exact_prediction_parity": true,
+        "exact_float32_score_parity": true
+      }
+    }
+  },
+  "application_demo_cases": {
+    "cold_start": "application/examples/current_transaction.json without history",
+    "known_card_new_merchant": "application/examples/current_transaction.json + application/examples/history.json",
+    "invalid_amount": "application/examples/invalid_amount.json",
+    "same_timestamp_history": "application/examples/same_timestamp_history.json"
+  }
+}

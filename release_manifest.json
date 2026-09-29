@@ -1,0 +1,73 @@
+{
+  "manifest_version": "1.0",
+  "created_at_utc": "2026-09-22T03:31:53.825256+00:00",
+  "project": "AI Transaction Fraud Risk Screening",
+  "python": {
+    "requires": ">=3.11",
+    "tested": "3.14.6"
+  },
+  "runtime_packages": {
+    "joblib": "1.6.0",
+    "numpy": "2.5.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5"
+  },
+  "zones": {
+    "research": "research and audit evidence",
+    "final_pipeline": "canonical executable ML implementation",
+    "application": "user-facing demo program"
+  },
+  "official": {
+    "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+    "model_path": "final_pipeline/artifacts/official/model/model.joblib",
+    "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "preprocessing_path": "final_pipeline/artifacts/official/preprocessing/preprocessing_state.json",
+    "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98",
+    "manifest_path": "final_pipeline/artifacts/official/manifest/artifact_manifest.json",
+    "semantic_feature_count": 10,
+    "encoded_feature_count": 47,
+    "positive_class": 1,
+    "threshold": 0.5,
+    "threshold_comparator": ">"
+  },
+  "commands": {
+    "install_runtime": "python -m pip install -r requirements.txt",
+    "install_final_pipeline": "python -m pip install --no-deps -e final_pipeline",
+    "install_application": "python -m pip install --no-deps -e application",
+    "demo": "python -m fraud_screening_app.demo",
+    "cold_start": "fraud-screening-app screen --transaction-json application/examples/current_transaction.json",
+    "with_history": "fraud-screening-app screen --transaction-json application/examples/current_transaction.json --history-json application/examples/history.json"
+  },
+  "verification": {
+    "final_pipeline_tests": 175,
+    "application_tests": 17,
+    "fresh_environment_smoke": {
+      "final_pipeline_wheel_build": "PASS",
+      "application_wheel_build": "PASS",
+      "fresh_venv_created": "PASS",
+      "project_wheel_install": "PASS",
+      "package_import": "PASS",
+      "locked_dependency_import": "PASS",
+      "official_model_load": "PASS",
+      "selected_inference": "PASS",
+      "selected_final_pipeline_tests": "PASS",
+      "selected_application_tests": "PASS",
+      "third_party_dependency_source": "locked current environment via read-only .pth",
+      "setuptools_required_for_smoke": false,
+      "network_dependency_install_required": false
+    },
+    "official_artifact_immutability": "PASS",
+    "software_testing_gate": "PASS"
+  },
+  "repository": {
+    "git": {
+      "git_available": true,
+      "repository_detected": false,
+      "status_short": null
+    },
+    "runtime_dependency_final_pipeline_to_research": "NONE",
+    "runtime_dependency_application_to_research": "NONE",
+    "runtime_dependency_application_to_final_pipeline": "REQUIRED"
+  }
+}

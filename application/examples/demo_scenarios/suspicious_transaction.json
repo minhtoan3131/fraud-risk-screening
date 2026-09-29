@@ -1,0 +1,14 @@
+{
+  "User": 900002,
+  "Card": 0,
+  "Year": 2019,
+  "Month": 8,
+  "Day": 15,
+  "Time": "14:30",
+  "Amount": "$95.00",
+  "Use Chip": "Chip Transaction",
+  "Merchant Name": 77777,
+  "Merchant City": "Boston",
+  "Merchant State": "MA",
+  "Zip": null
+}

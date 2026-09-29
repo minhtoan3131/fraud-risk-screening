@@ -1,0 +1,60 @@
+{
+  "archived_tools": [
+    "bootstrap_rebuild_foundation.py",
+    "bootstrap_rebuild_preprocessing.py",
+    "bootstrap_rebuild_model_fit.py",
+    "bootstrap_rebuild_persistence.py",
+    "bootstrap_rebuild_training_command.py",
+    "fix_rebuild_order_contract.py",
+    "fix_rebuild_order_contract_v2.py"
+  ],
+  "official_artifacts": {
+    "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98",
+    "unchanged_during_finalization": true
+  },
+  "rebuild_policy": {
+    "full_w_short_training_performed": false,
+    "official_metrics_inherited_by_rebuild": false,
+    "official_promotion_performed": false,
+    "project_rebuild_run_created": false,
+    "raw_dataset_replay_stage": "M9.7",
+    "runtime_dependency_on_research": "NONE"
+  },
+  "registry_version": "m9.06-finalization-v1",
+  "scope": "Official artifact preservation plus isolated training/rebuild path",
+  "source_contract_anchors": {
+    "bundle_research_reject": true,
+    "bundle_w_short_fraud": true,
+    "bundle_w_short_rows": true,
+    "cli_execute_flag": true,
+    "cli_official_sha_guard": true,
+    "factory_final_config": true,
+    "output_official_guard": true,
+    "output_rebuild_root": true,
+    "persistence_no_metric_inheritance": true,
+    "preprocessing_no_official_claim": true,
+    "preprocessing_train_only": true,
+    "rebuild_orchestrator": true,
+    "trainer_model_fit": true,
+    "trainer_no_official_evaluation": true
+  },
+  "static_gates": {
+    "G01_REQUIRED_PRODUCT_FILES": true,
+    "G02_OFFICIAL_IDENTITY": true,
+    "G03_NO_PREDICTION_IN_TRAINING": true,
+    "G04_NO_RESEARCH_DATA_RUNTIME_REF": true,
+    "G05_REBUILD_CONTRACT_TOKENS": true,
+    "G06_NO_PROJECT_REBUILD_RUN": true,
+    "G07_ARCHIVE_TARGET_CLEAR": true
+  },
+  "status": "PASS",
+  "unit_tests": {
+    "expected_count": 146,
+    "learned_state_scope": "synthetic in-memory/temp-directory fixtures only",
+    "log_file": "unit_tests.txt",
+    "observed_count": 146,
+    "return_code": 0,
+    "status": "PASS"
+  }
+}

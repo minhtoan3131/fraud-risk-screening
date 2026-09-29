@@ -1,0 +1,32 @@
+{
+  "manifest_version": "1.0",
+  "model": {
+    "classes": [
+      0,
+      1
+    ],
+    "file": "model/model.joblib",
+    "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+    "positive_class": 1,
+    "positive_class_index": 1,
+    "sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f"
+  },
+  "preprocessing": {
+    "encoded_feature_count": 47,
+    "file": "preprocessing/preprocessing_state.json",
+    "matrix_dtype": "float32",
+    "matrix_format": "CSR",
+    "semantic_feature_count": 10,
+    "sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98"
+  },
+  "runtime_policy": {
+    "official_artifacts_read_only": true,
+    "silent_research_fallback": false,
+    "training_may_overwrite_official": false
+  },
+  "screening": {
+    "risk_score_interface": "predict_proba positive-class score",
+    "threshold": 0.5,
+    "threshold_comparator": ">"
+  }
+}

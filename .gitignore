@@ -1,0 +1,72 @@
+# Operating system and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Test coverage and tooling
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Build and packaging outputs
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local reports, course materials and personal working files
+/local/
+
+# Raw datasets and generated research artifacts
+/research/data/raw/
+/research/data/processed/
+/data/raw/
+/data/processed/
+*.png
+
+# Generated training and rebuild outputs
+/final_pipeline/outputs/
+/outputs/
+
+# Archived pre-release scripts and duplicate files
+/research/finalization_evidence/release_hardening/archived_pre_release_files/
+
+# Logs, temporary files and backups
+*.log
+*.tmp
+*.temp
+*.bak
+*.bak_*
+*.backup
+*.backup.*
+~$*

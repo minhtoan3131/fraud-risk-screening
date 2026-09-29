@@ -1,0 +1,151 @@
+{
+  "created_at_utc": "2026-09-21T16:38:34.505803+00:00",
+  "frozen_identity": {
+    "expected_model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "expected_preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98",
+    "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98"
+  },
+  "gate_status": "PASS",
+  "gates": {
+    "G01_SOURCE_PRECEDENCE_DEFINED": true,
+    "G02_M4_SOURCE_PRESENT": true,
+    "G03_M7_SOURCE_PRESENT": true,
+    "G04_M8_SOURCE_PRESENT": true,
+    "G05_M9_ARCH_SOURCE_PRESENT": true,
+    "G06_M9_3_RUNTIME_EVIDENCE_PRESENT": true,
+    "G07_MODEL_FINGERPRINT_LOCKED": true,
+    "G08_PREPROCESSING_FINGERPRINT_LOCKED": true,
+    "G09_CONTRACT_TARGETS_COMPLETE": true,
+    "G10_NO_SCIENTIFIC_CHANGE": true
+  },
+  "guardrails": {
+    "feature_contract_changed": false,
+    "model_fit_performed": false,
+    "official_artifact_overwrite_performed": false,
+    "prediction_performed": false,
+    "preprocessing_refit_performed": false,
+    "threshold_changed": false
+  },
+  "next_step": "M9.4.2 — Transaction Input + Data Contract",
+  "planned_m9_4_contracts": [
+    "transaction_input_contract",
+    "history_contract",
+    "feature_contract",
+    "preprocessing_contract",
+    "model_contract",
+    "threshold_contract",
+    "inference_output_contract",
+    "artifact_contract",
+    "error_validation_contract",
+    "implementation_boundary_contract"
+  ],
+  "purpose": "Trace each M9.4 final-pipeline contract back to the reviewed scientific and architectural source.",
+  "registry_version": "M9.4.1-contract-source-registry-v1",
+  "source_precedence": [
+    "verified runtime evidence",
+    "reviewed notebook evidence",
+    "latest locked CANON",
+    "plan / generic guidance"
+  ],
+  "sources": {
+    "M4_FEATURE_PREPROCESSING": {
+      "contract_targets": [
+        "transaction_input_contract",
+        "history_contract",
+        "feature_contract",
+        "preprocessing_contract"
+      ],
+      "locked_decisions": [
+        "exactly 10 pre-encoding semantic features",
+        "strict causal history: Timestamp(history) < Timestamp(current)",
+        "same-timestamp peers cannot be history for each other",
+        "historical warm-up is allowed and preserved",
+        "cold-start semantics are explicit structural state",
+        "numeric branch uses TRAIN-only StandardScaler state",
+        "boolean branch is passthrough float32",
+        "categorical branch uses TRAIN-only OneHotEncoder vocabulary",
+        "unknown categories map to explicit __UNKNOWN__",
+        "final representation width is 47",
+        "final representation is CSR sparse float32",
+        "raw User/Card/Merchant Name are history keys only, not direct classifier features",
+        "Errors? is not part of baseline model input"
+      ],
+      "role": "Canonical source for feature semantics, history semantics and preprocessing semantics",
+      "source_document": "CANON-M4.8 — Tổng hợp Feature Specification v1.0, Preprocessing Specification v1.0, Behavioral Feature Contract, Decision Log và M4 Gate"
+    },
+    "M7_MODEL_THRESHOLD": {
+      "contract_targets": [
+        "model_contract",
+        "threshold_contract",
+        "inference_output_contract"
+      ],
+      "locked_decisions": [
+        "training window = W_SHORT",
+        "model family = RandomForestClassifier",
+        "model config = RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+        "imbalance strategy = class_weight balanced",
+        "random_state = 42",
+        "probability interface = predict_proba",
+        "positive class = 1",
+        "risk score = positive-class score",
+        "threshold = 0.50",
+        "prediction comparator is strictly risk_score > 0.50"
+      ],
+      "role": "Canonical source for selected model configuration and numerical threshold",
+      "source_document": "CANON-M7.9 — Final Selection Registry, Decision Log và M7 Gate"
+    },
+    "M8_FROZEN_EVALUATED_SUBJECT": {
+      "contract_targets": [
+        "model_contract",
+        "artifact_contract",
+        "inference_output_contract"
+      ],
+      "locked_decisions": [
+        "M9 default packaging subject is the same M8 evaluated frozen subject",
+        "no silent TRAIN+VALIDATION refit replacement",
+        "risk score may be called risk score / positive-class score",
+        "do not call score calibrated confidence",
+        "do not call score real-world fraud probability",
+        "retroactive optimization using FINAL TEST is prohibited"
+      ],
+      "role": "Canonical source for frozen evaluated subject, risk-score language and no-retroactive-optimization guardrail",
+      "source_document": "CANON-M8.6 — Final Evaluation Registry, Decision Log và M8 Gate"
+    },
+    "M9_3_REPOSITORY_MIGRATION": {
+      "contract_targets": [
+        "implementation_boundary_contract",
+        "artifact_contract"
+      ],
+      "locked_decisions": [
+        "research/final_pipeline/application zones exist",
+        "legacy data/notebooks/reports moved under research",
+        "M9.4 is authorized",
+        "frozen model identity preserved",
+        "frozen preprocessing identity preserved"
+      ],
+      "role": "Runtime evidence that three-zone migration completed without changing frozen scientific identity",
+      "source_document": "research/data/processed/m9_03_repository_migration/m9_03_final_registry.json"
+    },
+    "M9_ARCHITECTURE_TRANSITION": {
+      "contract_targets": [
+        "artifact_contract",
+        "error_validation_contract",
+        "implementation_boundary_contract"
+      ],
+      "locked_decisions": [
+        "research is provenance/evidence, not runtime dependency",
+        "canonical implementation lives in final_pipeline",
+        "application depends on final_pipeline only",
+        "notebooks consume source; source does not depend on notebooks",
+        "one canonical implementation per core logic",
+        "official evaluated artifact is promoted byte-preserving",
+        "rebuild outputs must not overwrite official artifacts",
+        "silent official overwrite is prohibited"
+      ],
+      "role": "Canonical source for repository boundaries, runtime dependency direction and official artifact policy",
+      "source_document": "CANON-M9.2 — Final Architecture & Transition Charter"
+    }
+  },
+  "status": "LOCKED"
+}

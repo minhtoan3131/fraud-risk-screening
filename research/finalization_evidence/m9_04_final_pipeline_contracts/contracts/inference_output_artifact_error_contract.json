@@ -1,0 +1,270 @@
+{
+  "application_boundary_contract": {
+    "application_calls": "one final_pipeline inference/service interface",
+    "application_must_not": [
+      "fit preprocessing",
+      "fit model",
+      "import research notebooks",
+      "read research artifacts directly",
+      "apply its own threshold logic"
+    ],
+    "application_must_not_know": [
+      "47-column encoded feature order",
+      "numeric scaler internals",
+      "categorical vocabularies",
+      "positive probability column index implementation",
+      "joblib loading details",
+      "artifact SHA verification implementation",
+      "history-state implementation details"
+    ]
+  },
+  "artifact_contract": {
+    "current_pre_promotion_sources": {
+      "model": "research/data/processed/m8_02_final_test_artifact_audit/m8_02_selected_rf_estimator.joblib",
+      "preprocessing": "research/data/processed/m8_02_final_test_artifact_audit/m8_02_w_short_preprocessing_state.json",
+      "purpose": "Identity/source evidence before M9.6 promotion only."
+    },
+    "expected_identity": {
+      "classes": [
+        0,
+        1
+      ],
+      "feature_count": 47,
+      "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+      "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+      "positive_class": 1,
+      "positive_class_index": 1,
+      "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98"
+    },
+    "loader_validation_order": [
+      "resolve official manifest/path",
+      "require artifact files to exist",
+      "verify model SHA-256",
+      "verify preprocessing SHA-256",
+      "load preprocessing state",
+      "verify preprocessing feature_count == 47",
+      "verify semantic/numeric schema identity",
+      "load estimator",
+      "verify estimator type/config/classes",
+      "verify positive class index == 1",
+      "only then authorize inference"
+    ],
+    "observed_source_identity_at_contract_time": {
+      "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+      "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98"
+    },
+    "official_runtime_paths_after_m9_6": {
+      "manifest": "final_pipeline/artifacts/official/manifest/official_artifact_manifest.json",
+      "model": "final_pipeline/artifacts/official/model/m8_02_selected_rf_estimator.joblib",
+      "preprocessing": "final_pipeline/artifacts/official/preprocessing/m8_02_w_short_preprocessing_state.json"
+    },
+    "official_runtime_policy": {
+      "application_may_load_from_research": false,
+      "final_pipeline_runtime_may_load_from_research_after_m9_6": false,
+      "official_artifacts_immutable_in_normal_runtime": true,
+      "promotion_method": "byte-preserving copy",
+      "promotion_requires_exact_identity": true,
+      "promotion_step": "M9.6",
+      "silent_fallback_to_research": false
+    },
+    "overwrite_policy": {
+      "official_change_requires": [
+        "explicit promotion action",
+        "identity validation",
+        "overwrite guard",
+        "documented reason"
+      ],
+      "rebuild_target": "final_pipeline/outputs/rebuilds/<run_id>/",
+      "silent_overwrite_allowed": false,
+      "training_may_write_official": false
+    }
+  },
+  "contract_version": "M9.4.5-inference-output-artifact-error-contract-v1",
+  "created_at_utc": "2026-09-21T16:51:45.549335+00:00",
+  "error_validation_contract": {
+    "error_types": {
+      "ArtifactCompatibilityError": {
+        "examples": [
+          "estimator is not expected RandomForestClassifier",
+          "classes are not [0, 1]",
+          "positive class index is not 1",
+          "model config identity mismatch"
+        ],
+        "fatal": true
+      },
+      "ArtifactFingerprintError": {
+        "examples": [
+          "model SHA-256 mismatch",
+          "preprocessing SHA-256 mismatch"
+        ],
+        "fatal": true
+      },
+      "ArtifactNotFoundError": {
+        "examples": [
+          "official model missing",
+          "official preprocessing state missing",
+          "official manifest missing"
+        ],
+        "fatal": true
+      },
+      "HistoryValidationError": {
+        "examples": [
+          "future history supplied",
+          "same-timestamp peer used as history",
+          "target label appears in history state",
+          "history ordering violates strict causality"
+        ],
+        "fatal": true
+      },
+      "InferenceContractError": {
+        "examples": [
+          "risk_score is non-finite",
+          "risk_score outside [0, 1]",
+          "screening_prediction disagrees with strict > 0.50 rule"
+        ],
+        "fatal": true
+      },
+      "InputValidationError": {
+        "examples": [
+          "required scoring field missing",
+          "Timestamp parse failure",
+          "Amount parse failure",
+          "invalid Time/date component",
+          "location combination resolves to OTHER_INCONSISTENT",
+          "non-integer Zip when Zip is present"
+        ],
+        "fatal": true
+      },
+      "PreprocessingContractError": {
+        "examples": [
+          "semantic feature count/order mismatch",
+          "preprocessing output width != 47",
+          "unexpected output dtype/representation",
+          "frozen preprocessing state incompatible"
+        ],
+        "fatal": true
+      }
+    },
+    "no_silent_repair": [
+      "do not fabricate required fields",
+      "do not coerce OTHER_INCONSISTENT to a valid location state",
+      "do not change threshold on error",
+      "do not fallback to another model",
+      "do not refit preprocessing",
+      "do not retrain model"
+    ],
+    "non_errors": {
+      "cold_start": "Valid structural state; not an exception.",
+      "known_structural_location_missingness": "Valid when it resolves deterministically to a locked location_state.",
+      "unknown_frozen_categorical_value": "Handled by frozen __UNKNOWN__ preprocessing policy; not automatically fatal."
+    },
+    "principle": "Fail fast on invalid input, causal-state violation, artifact mismatch or inference-contract violation."
+  },
+  "gate_status": "PASS",
+  "gates": {
+    "G01_SOURCE_REGISTRY_PASS": true,
+    "G02_INPUT_CONTRACT_PASS": true,
+    "G03_HISTORY_FEATURE_CONTRACT_PASS": true,
+    "G04_PREPROCESSING_MODEL_CONTRACT_PASS": true,
+    "G05_MINIMUM_OUTPUT_FIELDS_LOCKED": true,
+    "G06_SCREENING_LABEL_NOT_GROUND_TRUTH": true,
+    "G07_STRICT_THRESHOLD_OUTPUT_RULE": true,
+    "G08_RISK_SCORE_LANGUAGE_SAFE": true,
+    "G09_OFFICIAL_RUNTIME_NO_RESEARCH_FALLBACK": true,
+    "G10_PROMOTION_POLICY_PROTECTED": true,
+    "G11_FINGERPRINTS_LOCKED": true,
+    "G12_ERROR_TAXONOMY_COMPLETE": true,
+    "G13_COLD_START_NOT_ERROR": true,
+    "G14_NO_SILENT_REPAIR": true,
+    "G15_APPLICATION_BOUNDARY_LOCKED": true,
+    "G16_NO_SCIENTIFIC_CHANGE": true
+  },
+  "guardrails": {
+    "artifact_copy_performed": false,
+    "artifact_overwrite_performed": false,
+    "model_fit_performed": false,
+    "official_manifest_created": false,
+    "predict_proba_performed": false,
+    "prediction_performed": false,
+    "preprocessing_transform_performed": false,
+    "threshold_changed": false
+  },
+  "inference_output_contract": {
+    "determinism": {
+      "same_input_and_same_state_same_result_required": true
+    },
+    "optional_fields": {
+      "cold_start": {
+        "meaning": "True iff no strict-prior User+Card history was available for this prediction point.",
+        "type": "boolean"
+      },
+      "warnings": {
+        "default": [],
+        "meaning": "Non-fatal inference notices only; warnings must never hide validation/artifact failures.",
+        "type": "list[string]"
+      }
+    },
+    "required_fields": {
+      "model_id": {
+        "type": "string",
+        "value": "RF-REF-100-GINI-SQRT-UNPRUNED-CW"
+      },
+      "risk_score": {
+        "domain": "[0.0, 1.0]",
+        "finite_required": true,
+        "meaning": "positive-class / class-1 model score",
+        "type": "float"
+      },
+      "screening_prediction": {
+        "allowed_values": [
+          0,
+          1
+        ],
+        "not_equal_to_ground_truth_fraud_label": true,
+        "rule": "1 iff risk_score > 0.50; else 0",
+        "semantics": {
+          "0": "negative screening result / not flagged",
+          "1": "positive screening result / flagged"
+        },
+        "type": "integer"
+      },
+      "threshold": {
+        "type": "float",
+        "value": 0.5
+      }
+    },
+    "risk_score_language": {
+      "allowed": [
+        "risk score",
+        "positive-class score",
+        "model score"
+      ],
+      "calibrated": false,
+      "prohibited": [
+        "calibrated confidence",
+        "real-world fraud probability",
+        "x% chắc chắn là fraud"
+      ]
+    }
+  },
+  "next_step": "M9.4.6 — Contract Registry + M9.4 Final Gate",
+  "scope": "Stable inference result schema, official-artifact loading policy, validation/error taxonomy and application boundary.",
+  "side_effect_classification": {
+    "artifact_load_and_validation": "A_READ_ONLY",
+    "fit_or_training": "C_LEARNED_STATE_CREATION",
+    "official_promotion_or_overwrite": "D_PROTECTED_PROMOTION_OR_OVERWRITE",
+    "parse_feature_transform_inference": "B_DETERMINISTIC_TRANSFORM_OR_INFERENCE"
+  },
+  "source_trace": {
+    "m8_output_guard": "CANON-M8.3 — Frozen Final Inference Run",
+    "m8_score_language": "CANON-M8.6 — Final Evaluation Registry",
+    "m9_architecture": "CANON — Kiến trúc ba vùng và kế hoạch thực thi M9–M14",
+    "upstream_contracts": [
+      "final_pipeline/docs/contracts/transaction_input_data_contract.json",
+      "final_pipeline/docs/contracts/history_feature_contract.json",
+      "final_pipeline/docs/contracts/preprocessing_model_threshold_contract.json",
+      "final_pipeline/docs/contracts/contract_source_registry.json"
+    ]
+  },
+  "status": "LOCKED"
+}

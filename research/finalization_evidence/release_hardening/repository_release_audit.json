@@ -1,0 +1,75 @@
+{
+  "decision": "PASS",
+  "created_at_utc": "2026-09-22T03:31:53.857403+00:00",
+  "checks": {
+    "three_zones_exist": true,
+    "runtime_lock_exists": true,
+    "environment_record_exists": true,
+    "root_readme_exists": true,
+    "data_artifact_instructions_exist": true,
+    "install_instructions_exist": true,
+    "release_manifest_exists": true,
+    "fresh_environment_smoke": true,
+    "official_hashes_unchanged": true,
+    "product_filename_clean": true,
+    "root_progress_scripts_archived": true,
+    "required_root_files_present": true
+  },
+  "runtime_environment": {
+    "python_version": "3.14.6",
+    "python_implementation": "CPython",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "joblib": "1.6.0",
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5"
+    },
+    "package_python_requirement": ">=3.11",
+    "purpose": "exact environment used for release smoke verification"
+  },
+  "official": {
+    "model_sha256": "61bdeeba5fd163cce8a5a9efa028a9cdc2f95c0796822a5222c0604c0302115f",
+    "preprocessing_sha256": "c1dc5486acdcd43f5f75fbd0a11bd7ad3a3b00761d50ae96b2b1fbe5b5d9ef98",
+    "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW"
+  },
+  "fresh_environment_smoke": {
+    "final_pipeline_wheel_build": "PASS",
+    "application_wheel_build": "PASS",
+    "fresh_venv_created": "PASS",
+    "project_wheel_install": "PASS",
+    "package_import": "PASS",
+    "locked_dependency_import": "PASS",
+    "official_model_load": "PASS",
+    "selected_inference": "PASS",
+    "selected_final_pipeline_tests": "PASS",
+    "selected_application_tests": "PASS",
+    "third_party_dependency_source": "locked current environment via read-only .pth",
+    "setuptools_required_for_smoke": false,
+    "network_dependency_install_required": false
+  },
+  "git": {
+    "git_available": true,
+    "repository_detected": false,
+    "status_short": null
+  },
+  "root_progress_scripts_archived": [
+    "bootstrap_application_acceptance_demo.py",
+    "bootstrap_application_core_features.py",
+    "bootstrap_clean_handoff_application_shell.py",
+    "bootstrap_clean_handoff_application_shell_v2.py",
+    "bootstrap_m9_07_card_block_replay.py",
+    "bootstrap_m9_07_inference_service.py",
+    "bootstrap_m9_07_interactive_inference.py",
+    "bootstrap_m9_07_raw_dataset_boundary.py",
+    "bootstrap_m9_07_raw_dataset_boundary_v2.py",
+    "bootstrap_m9_07_walkthroughs_batch.py",
+    "bootstrap_release_submission_hardening.py",
+    "bootstrap_release_submission_hardening_v2.py",
+    "bootstrap_release_submission_hardening_v3.py",
+    "bootstrap_software_testing_hardening_v2.py"
+  ],
+  "product_filename_violations": [],
+  "stop_boundary": "ready for final report/presentation; not started here"
+}

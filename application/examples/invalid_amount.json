@@ -1,0 +1,14 @@
+{
+  "User": 999999,
+  "Card": 0,
+  "Year": 2018,
+  "Month": 1,
+  "Day": 1,
+  "Time": "10:00",
+  "Amount": "not-a-number",
+  "Use Chip": "Chip Transaction",
+  "Merchant Name": 200,
+  "Merchant City": "A",
+  "Merchant State": "CA",
+  "Zip": 90001
+}

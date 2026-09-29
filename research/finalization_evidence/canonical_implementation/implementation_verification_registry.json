@@ -1,0 +1,223 @@
+{
+  "archived_tools": {
+    "bootstrap_data_boundary.py": {
+      "sha256": "7eaecb76d7abeb5238d06e5b97859749943b971ff9568fb649edd212a0a54ad8",
+      "size_bytes": 20574
+    },
+    "bootstrap_frozen_preprocessing.py": {
+      "sha256": "0a732a10a80a946e27963236cf7344f317fda60f444982fa0ccb108f81984e55",
+      "size_bytes": 41417
+    },
+    "bootstrap_history_features.py": {
+      "sha256": "26ec9e7b3174898b894977256c74805dc742c81b581bb0f17986f5fb35d05ccb",
+      "size_bytes": 19562
+    },
+    "bootstrap_inference_primitives.py": {
+      "sha256": "5e3d802d211deb6d53e5cacf83622f89b20bc5770dcd2c8b05a41af086b9ef6d",
+      "size_bytes": 26936
+    },
+    "bootstrap_model_artifact_loader.py": {
+      "sha256": "b56b24fd74e222e8b8a26b5c079e0cd5a939d93a078328e26babdf6d80beef38",
+      "size_bytes": 23185
+    },
+    "bootstrap_semantic_features.py": {
+      "sha256": "00b18c65f62a3fc620dc6a6bc986a3859d9e3333d2217ab73edfdbfb8d631f20",
+      "size_bytes": 17301
+    },
+    "bootstrap_transaction_features.py": {
+      "sha256": "760e91509ee653bd01b5e8c7a96b5601b77985e3bb31136c305461aa5fb0bb39",
+      "size_bytes": 9823
+    },
+    "inspect_preprocessing_state.py": {
+      "sha256": "6f8192fb48d4f5376d4522e0089c46c252177b5729b02052136ee2c1b9c0d084",
+      "size_bytes": 5865
+    }
+  },
+  "attestations": {
+    "application_modified": false,
+    "artifact_promoted": false,
+    "model_fit_performed": false,
+    "preprocessing_fit_performed": false,
+    "threshold_retuned": false
+  },
+  "created_at_utc": "2026-09-21T18:04:20.188218+00:00",
+  "gates": {
+    "G01_PRODUCT_FILES_PRESENT": true,
+    "G02_UNIT_SUITE_PASS": true,
+    "G03_EXACT_92_TESTS": true,
+    "G04_PRESENTATION_SURFACE_CLEAN": true,
+    "G05_NO_RUNTIME_RESEARCH_REFERENCE": true,
+    "G06_NO_FIT_IN_RUNTIME_SOURCE": true,
+    "G07_NO_PREDICT_IN_RUNTIME_SOURCE": true,
+    "G08_PREDICT_PROBA_SINGLE_PRIMITIVE": true,
+    "G09_EXACT_10_SEMANTIC_ORDER": true,
+    "G10_ROLE_COUNTS_4_2_4": true,
+    "G11_FROZEN_47_CSR_FLOAT32": true,
+    "G12_MODEL_ID_AND_POSITIVE_CLASS": true,
+    "G13_THRESHOLD_STRICT_GT": true,
+    "G14_TOOLING_COMPLETE_FOR_ARCHIVE": true,
+    "G15_EVIDENCE_TARGET_EMPTY": true
+  },
+  "locked_contracts": {
+    "boolean_count": 2,
+    "categorical_count": 4,
+    "encoded_feature_count": 47,
+    "matrix_dtype": "float32",
+    "matrix_format": "CSR",
+    "model_id": "RF-REF-100-GINI-SQRT-UNPRUNED-CW",
+    "model_parameter_count": 12,
+    "numeric_count": 4,
+    "positive_class": 1,
+    "semantic_order_exact": true,
+    "strict_boundary": [
+      0,
+      0,
+      1
+    ],
+    "threshold": 0.5
+  },
+  "operation": "canonical_implementation_verification",
+  "product_manifest": {
+    ".gitignore": {
+      "sha256": "8d51dddaf3e4138b4853a2b54d510fa2922b50cf75d48dc2ada48de06b3774e4",
+      "size_bytes": 207
+    },
+    "README.md": {
+      "sha256": "d599a2c74071771d5d528e10cfa4fd6fc9ad07cc4394bf5b4a2bb4dacfd6a8a1",
+      "size_bytes": 393
+    },
+    "application/README.md": {
+      "sha256": "9d6b69e9b2f7cf045ccbea6e8f808d3cc118ed511b539adebcb4978b1ed6fed1",
+      "size_bytes": 179
+    },
+    "final_pipeline/README.md": {
+      "sha256": "e731816234e79eb8a7a73e99688d11d57eed76381c95334b329bd94e0f8f0138",
+      "size_bytes": 1097
+    },
+    "final_pipeline/pyproject.toml": {
+      "sha256": "2f3ab9d9bff586624d501d3734e5a8f7b4fcd9dc6ecc3ba398c9b636f2236c41",
+      "size_bytes": 359
+    },
+    "final_pipeline/src/fraud_screening/__init__.py": {
+      "sha256": "91c1ac07cd2856b97b23f26293fe439321ebe114bb07aa26da174653de62578f",
+      "size_bytes": 280
+    },
+    "final_pipeline/src/fraud_screening/artifacts/__init__.py": {
+      "sha256": "cf79c6bb47c998f1bf355239dbfb6b7b83629a24071ffcf668d4e61a7ee108e3",
+      "size_bytes": 375
+    },
+    "final_pipeline/src/fraud_screening/artifacts/model_loader.py": {
+      "sha256": "57457e863060b7ca5248a7d8e5698efeb7fde691c318f53e5c92fa630593d4bd",
+      "size_bytes": 4411
+    },
+    "final_pipeline/src/fraud_screening/data/__init__.py": {
+      "sha256": "d2a7adb85da7503b2f7c36b885bfbb246ed594aec2610df3986550518f9525ff",
+      "size_bytes": 493
+    },
+    "final_pipeline/src/fraud_screening/data/models.py": {
+      "sha256": "96f9a991cae37ec0de80531a2db7b646f1f8235c2b225a19f98037a525db61b6",
+      "size_bytes": 534
+    },
+    "final_pipeline/src/fraud_screening/data/parsing.py": {
+      "sha256": "74ee13ca55133c259ae137395be54d0b664d7218986a4a04cf243e4ee4497056",
+      "size_bytes": 8246
+    },
+    "final_pipeline/src/fraud_screening/data/schema.py": {
+      "sha256": "2e3d795a31b3ab93ca5a2d3c9fa1445f1f0460e0d88cfb5b53fc1de24718f83f",
+      "size_bytes": 453
+    },
+    "final_pipeline/src/fraud_screening/errors.py": {
+      "sha256": "ae4c19a0ebe8676f1714139dfd8304c4564b03535ff2aed93e13491e3daca292",
+      "size_bytes": 1015
+    },
+    "final_pipeline/src/fraud_screening/features/__init__.py": {
+      "sha256": "d57f6b52a62ba6a778f57bd46f3215b9ece901cbee9c0dccc876ff9a3ec0fa46",
+      "size_bytes": 958
+    },
+    "final_pipeline/src/fraud_screening/features/history.py": {
+      "sha256": "06cd7b67e389acb76e8c907b7be8db8933762969aeb9bdb03887f2dd59b8d0ba",
+      "size_bytes": 5495
+    },
+    "final_pipeline/src/fraud_screening/features/semantic.py": {
+      "sha256": "908f55d1ec13b08b34eb50f9d658694626b266f006a61353643814cfa350efd7",
+      "size_bytes": 3950
+    },
+    "final_pipeline/src/fraud_screening/features/transaction.py": {
+      "sha256": "b388e6558d1f57d11d550cf311917ec18292137c373df859796d23517bdee0ea",
+      "size_bytes": 1407
+    },
+    "final_pipeline/src/fraud_screening/inference/__init__.py": {
+      "sha256": "1d9b57ac541c329b01dcfcb2bfbd7fa918108b6521039707b8d3ec93bcca611e",
+      "size_bytes": 346
+    },
+    "final_pipeline/src/fraud_screening/inference/scoring.py": {
+      "sha256": "6e2a6898c10d24d11e2877a39128280527e1d6e729730effeded3dea64aa2d7f",
+      "size_bytes": 6120
+    },
+    "final_pipeline/src/fraud_screening/preprocessing/__init__.py": {
+      "sha256": "7e569eca6bcb1ae1b992da903ca8dd3519594017ced4207de79467eca03a6a14",
+      "size_bytes": 245
+    },
+    "final_pipeline/src/fraud_screening/preprocessing/frozen.py": {
+      "sha256": "8358784ed833898cc7955d16c8f1fe16393eb1e2c08ccb81ab665c34c9a9fa62",
+      "size_bytes": 15650
+    },
+    "final_pipeline/tests/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "final_pipeline/tests/unit/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "final_pipeline/tests/unit/test_data_boundary.py": {
+      "sha256": "0267601d180ca189677f77083b0f630aa62241ec9bdf5c04b037ff471674bf18",
+      "size_bytes": 5213
+    },
+    "final_pipeline/tests/unit/test_frozen_preprocessing.py": {
+      "sha256": "d8a197e8888b8ff3191ecc118a9e071b9261d7fda81064f90594f3bf27ed9cbb",
+      "size_bytes": 11416
+    },
+    "final_pipeline/tests/unit/test_history_features.py": {
+      "sha256": "58ecdbd0e7f5d6c1b71c929699bfea7958a6b21362e99f52c8f4f02574dd777d",
+      "size_bytes": 7424
+    },
+    "final_pipeline/tests/unit/test_inference_primitives.py": {
+      "sha256": "0b71da74a92cf01f7a9396ef56f0851a808205cd9afa125d3c3eed2614e6b491",
+      "size_bytes": 7727
+    },
+    "final_pipeline/tests/unit/test_model_artifact_loader.py": {
+      "sha256": "f3f34e582dd1185fc3c43278f725f4f4dbb88defaca285ab3a264d6ab65d4bc4",
+      "size_bytes": 6807
+    },
+    "final_pipeline/tests/unit/test_semantic_features.py": {
+      "sha256": "871236b626ff62da68ca806bcc54cd8b1b56fca362c6f41f8a577679ffef64ec",
+      "size_bytes": 6241
+    },
+    "final_pipeline/tests/unit/test_transaction_features.py": {
+      "sha256": "4b081e767536fae9c8edb5d02361a2a2c3dfecaad877bd6e5acac703ea996d88",
+      "size_bytes": 3956
+    }
+  },
+  "runtime_boundary": {
+    "fit_calls": [],
+    "predict_calls": [],
+    "predict_proba_calls": [
+      {
+        "count": 1,
+        "path": "final_pipeline/src/fraud_screening/inference/scoring.py"
+      }
+    ],
+    "research_refs": []
+  },
+  "status": "PASS",
+  "surface_hygiene": {
+    "progress_hits": [],
+    "status": "PASS"
+  },
+  "unit_test_summary": {
+    "expected_count": 92,
+    "observed_count": 92,
+    "status": "PASS"
+  }
+}

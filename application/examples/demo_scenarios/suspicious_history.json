@@ -1,0 +1,44 @@
+[
+  {
+    "User": 900002,
+    "Card": 0,
+    "Year": 2019,
+    "Month": 8,
+    "Day": 15,
+    "Time": "07:00",
+    "Amount": "$35.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 60001,
+    "Merchant City": "Boston",
+    "Merchant State": "MA",
+    "Zip": 2108
+  },
+  {
+    "User": 900002,
+    "Card": 0,
+    "Year": 2019,
+    "Month": 8,
+    "Day": 15,
+    "Time": "08:15",
+    "Amount": "$42.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 60001,
+    "Merchant City": "Boston",
+    "Merchant State": "MA",
+    "Zip": 2108
+  },
+  {
+    "User": 900002,
+    "Card": 0,
+    "Year": 2019,
+    "Month": 8,
+    "Day": 15,
+    "Time": "09:30",
+    "Amount": "$40.00",
+    "Use Chip": "Chip Transaction",
+    "Merchant Name": 60001,
+    "Merchant City": "Boston",
+    "Merchant State": "MA",
+    "Zip": 2108
+  }
+]

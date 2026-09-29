@@ -1,0 +1,56 @@
+{
+  "purpose": "defense/demo fixtures extracted from audited frozen FINAL TEST cases",
+  "warning": "Ground truth is stored only in metadata for demonstration; Is Fraud? is NOT passed to the classifier.",
+  "cases": [
+    {
+      "case": "fraud_tp",
+      "raw_row_id": 529515,
+      "User": 41,
+      "Card": 1,
+      "Timestamp": "2019-08-22 12:49:00",
+      "ground_truth": 1,
+      "expected_prediction": 1,
+      "expected_risk_score": 0.69,
+      "strict_prior_history_records": 1378,
+      "semantic_features": {
+        "amount_numeric": 4.3,
+        "time_since_previous_transaction_min": 162.0,
+        "transactions_last_1h": 0,
+        "amount_minus_previous_mean": -42.07641509433962,
+        "is_new_merchant": true,
+        "has_prior_card_history": true,
+        "transaction_mode": "Chip Transaction",
+        "location_state": "PHYSICAL_ZIP_UNAVAILABLE",
+        "hour_of_day": "12",
+        "day_of_week": "3"
+      },
+      "transaction_json": "/Users/minhtoan/SE/HocTrenLop/Trí tuệ nhân tạo/fraud-risk-screening-demo-cases/fraud_tp_transaction.json",
+      "history_json": "/Users/minhtoan/SE/HocTrenLop/Trí tuệ nhân tạo/fraud-risk-screening-demo-cases/fraud_tp_history.json"
+    },
+    {
+      "case": "non_fraud_tn",
+      "raw_row_id": 4861,
+      "User": 0,
+      "Card": 0,
+      "Timestamp": "2019-06-02 06:18:00",
+      "ground_truth": 0,
+      "expected_prediction": 0,
+      "expected_risk_score": 0.0,
+      "strict_prior_history_records": 4861,
+      "semantic_features": {
+        "amount_numeric": 141.72,
+        "time_since_previous_transaction_min": 1954.0,
+        "transactions_last_1h": 0,
+        "amount_minus_previous_mean": 75.63042172392511,
+        "is_new_merchant": false,
+        "has_prior_card_history": true,
+        "transaction_mode": "Chip Transaction",
+        "location_state": "PHYSICAL_COMPLETE",
+        "hour_of_day": "6",
+        "day_of_week": "6"
+      },
+      "transaction_json": "/Users/minhtoan/SE/HocTrenLop/Trí tuệ nhân tạo/fraud-risk-screening-demo-cases/non_fraud_tn_transaction.json",
+      "history_json": "/Users/minhtoan/SE/HocTrenLop/Trí tuệ nhân tạo/fraud-risk-screening-demo-cases/non_fraud_tn_history.json"
+    }
+  ]
+}

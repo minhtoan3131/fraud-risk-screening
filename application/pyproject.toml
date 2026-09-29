@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fraud-screening-app"
+version = "0.1.0"
+description = "User-facing transaction fraud-risk screening application"
+requires-python = ">=3.11"
+dependencies = [
+    "fraud-screening",
+]
+
+[project.scripts]
+fraud-screening-app = "fraud_screening_app.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
